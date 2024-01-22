@@ -1,7 +1,8 @@
 /**
  * Title: home.component.ts
- * Author: Professor Krasso
- * Date: 8/5/23
+ * Author: John Davidson
+ * Date: 1/18/2024
+ * Description: Home component
  */
 
 // imports statements

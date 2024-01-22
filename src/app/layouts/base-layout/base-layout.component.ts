@@ -1,7 +1,8 @@
 /**
  * Title: base-layout.component.ts
- * Author: Professor Krasso
- * Date: 8/5/23
+ * Author: John Davidson
+ * Date: 1/18/2024
+ * Description: Base-layout component
  */
 
 // imports statements

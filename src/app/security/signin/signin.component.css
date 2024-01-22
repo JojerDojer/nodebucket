@@ -1,0 +1,36 @@
+/**
+ * Title: signin.component.css
+ * Author: John Davidson
+ * Date: 1/18/2024
+ * Description: Styling for sign in page.
+ */
+
+.sign-in-card {
+  height: 800px;
+  margin-top: 16%;
+  background-color: #a6a6a6;
+  border: 1px solid #222f5b;
+  border-radius: 8px;
+}
+
+.card {
+  margin-top: 240px;
+  border-color: #222f5b;
+}
+
+h2 {
+  color: #946b2d
+}
+
+label {
+  font-size: 18px;
+}
+
+button {
+  background-color: #222f5b;
+}
+
+a {
+  font-size: 18px;
+}
+

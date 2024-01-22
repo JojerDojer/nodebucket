@@ -1,7 +1,8 @@
 /**
  * Title: security-routing.module.ts
- * Author: Professor Krasso
- * Date: 8/5/23
+ * Author: John Davidson
+ * Date: 1/18/2024
+ * Description: Security routing
  */
 
 // imports statements
@@ -10,6 +11,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { SecurityComponent } from './security.component';
 import { SigninComponent } from './signin/signin.component';
 
+// Security routing responsible for sign in.
 const routes: Routes = [
   {
     path: '',

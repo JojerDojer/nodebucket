@@ -1,3 +1,10 @@
+/**
+ * Title: tasks.component.ts
+ * Author: John Davidson
+ * Date: 1/18/2024
+ * Description: Tasks component
+ */
+
 import { Component } from '@angular/core';
 
 @Component({

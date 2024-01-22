@@ -1,0 +1,37 @@
+/**
+ * Title: home.component.css
+ * Author: John Davidson
+ * Date: 1/18/2024
+ * Description: Styling for the home page.
+ */
+
+h1 {
+  font-size: 50px;
+  margin-top: 50px;
+}
+
+.description {
+  width: 700px;
+  margin: auto;
+  margin-top: 70px;
+}
+
+p {
+  text-align: center;
+  font-size: 25px;
+}
+
+.image-container {
+  margin-top: 25px;
+  padding-top: 25px;
+  display: flex;
+  justify-content: center;
+}
+
+img {
+  height: 400px;
+  width: 400px;
+  border: 1px solid black;
+  border-radius: 8px;
+}
+

@@ -1,9 +1,16 @@
+<!--
+ Title: signin.component.html
+ Author: John Davidson
+ Date: 1/18/2024
+ Description: Mark up for the sign in page.
+-->
+
 <div class="container">
-  <div class="row justify-content-center mt-5">
+  <div class="row justify-content-center sign-in-card">
     <div class="col-lg-4 col-md-6 col-sm-6">
       <div class="card shadow">
         <div class="card-title text-center boarder-bottom">
-          <h2 class="p-3">Employee Sign In</h2>
+          <h2 class="p-3 ">Employee Sign In</h2>
         </div>
 
         <!-- error messages -->
@@ -11,6 +18,7 @@
           {{ errorMessage }}
         </div>
 
+        <!-- Sign in form -->
         <div class="card-body">
           <form [formGroup]="signinForm" (ngSubmit)="signin(); signinForm.reset();">
             <div class="mb-4">
@@ -19,9 +27,10 @@
             </div>
 
             <div class="d-grid">
-              <button type="submit" class="btn btn-dark">
-                <span *ngIf="!isLoading">Sign In</span>
+              <button type="submit" class="btn btn-dark bg-ravenclaw-blue">
+                <span *ngIf="!isLoading" style="font-size: 17px;">Sign In</span>
 
+                <!-- Add a loading effect to prevent users from spamming sign in. -->
                 <div *ngIf="isLoading">
                   <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Loading...
                 </div>
@@ -30,7 +39,8 @@
           </form>
         </div>
       </div>
-      <a routerLink="/" class="text-dark text-underline-hover">Return</a>
+      <!-- Return users to home page from the sign in page. -->
+      <a routerLink="/" class="text-dark text-underline-hover">Return home</a>
     </div>
   </div>
 </div>

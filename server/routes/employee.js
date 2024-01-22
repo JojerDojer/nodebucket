@@ -14,6 +14,30 @@ const router= express.Router();
 // Import the 'mongo' function from the '../utils/mongo' module.
 const { mongo } = require("../utils/mongo")
 
+/**
+ * @swagger
+ * /api/employees/{empId}:
+ *   get:
+ *     summary: Get an employee by ID
+ *     description: Retrieve employee details by providing their ID.
+ *     parameters:
+ *       - in: path
+ *         name: empId
+ *         required: true
+ *         description: Employee ID
+ *         schema:
+ *           type: integer
+ *     responses:
+ *       '200':
+ *         description: Successful response with the employee data.
+ *       '400':
+ *         description: Bad request, invalid employee ID.
+ *       '404':
+ *         description: Employee not found.
+ *       '500':
+ *         description: Internal server error.
+ */
+
 // Define a route for handling GET requests to '/api/employees/:empId'.
 router.get("/:empId", (req, res, next) => {
   try {

@@ -1,4 +1,11 @@
-<nav class="navbar navbar-expand-sm navbar-dark">
+<!--
+ Title: nav.component.html
+ Author: John Davidson
+ Date: 1/18/2024
+ Description: Mark up for the navigation bar.
+-->
+
+<nav class="navbar navbar-expand-sm navbar-dark bg-ravenclaw-blue">
 
   <a routerLink="/" class="navbar-brand">NodeBucket</a>
   <button
@@ -14,18 +21,20 @@
   </button>
 
   <div class="collapse navbar-collapse" id="navbarResponsive">
-    <ul class="navbar-nav ms-auto p-2">
+    <ul class="navbar-nav ms-auto p-2 justify-content-between nav-font">
+      <!-- Navigation tabs. -->
       <li class="navbar-item">
         <a routerLink="/home" class="nav-link">Home</a>
       </li>
       <li class="navbar-item">
-        <a routerLink="/#" class="nav-link">About Us</a>
+        <a routerLink="#" class="nav-link">About Us</a>
       </li>
       <li class="navbar-item">
-        <a routerLink="/#" class="nav-link">Contact</a>
+        <a routerLink="#" class="nav-link">Contact</a>
       </li>
 
-      <li *ngIf="!isLoggedIn">
+      <!-- Sign in Button. -->
+      <li *ngIf="!isLoggedIn" class="sign-in-out-button">
         <a class="nav-link" routerLink="/security/signin">Sign In</a>
       </li>
 
@@ -40,6 +49,7 @@
         person
         </span>
         </a>
+        <!-- Displays a dropdown list of the logged in user's information. -->
         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
           <li class="dropdown-item">
             Signed in as {{ appUser.fullName }}
@@ -47,6 +57,7 @@
           <li>
             <a routerLink="/task-management" class="dropdown-item">My Tasks</a>
           </li>
+          <!-- Sign out button. -->
           <li>
             <a (click)="signout()" class="dropdown-item link">Sign Out</a>
           </li>

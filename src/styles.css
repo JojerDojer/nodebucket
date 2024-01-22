@@ -1,1 +1,35 @@
-/* You can add global styles to this file, and also import other style files */
+/**
+ * Title: style.css
+ * Author: John Davidson
+ * Date: 1/18/2024
+ * Description: Global styles file
+ */
+
+.bg-ravenclaw-blue {
+  background-color: #222f5b;
+}
+
+.bg-ravenclaw-silver {
+  background-color: #a6a6a6;
+}
+
+.ravenclaw-blue {
+  color: #222f5b;
+}
+
+.ravenclaw-silver {
+  color: #a6a6a6;
+}
+
+.ravenclaw-brown {
+  color: #946b2d;
+}
+
+.nav-font {
+  font-size: 22px;
+}
+
+.sign-in-out-button {
+  margin-left: 60px;
+}
+
