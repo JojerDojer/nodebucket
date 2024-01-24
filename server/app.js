@@ -45,8 +45,6 @@ app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpecification));
 
 app.use("/api/employees", employeeRoute); // Use the employee route.
 
-
-
 // error handler for 404 errors
 app.use(function(req, res, next) {
   next(createServer(404)) // forward to error handler
@@ -65,6 +63,7 @@ app.use(function(err, req, res, next) {
   })
 })
 
-
-
 module.exports = app // export the Express application
+
+
+

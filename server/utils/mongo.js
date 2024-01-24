@@ -9,9 +9,11 @@
 
 // Import MongoClient from the mongodb package.
 const { MongoClient } = require("mongodb");
+const config = require('./config');
+const { name } = require("ejs");
 
 // Mongo connection string.
-const MONGO_URL = "mongodb+srv://nodebucket_user:s3cret@bellevueuniversity.feyswh3.mongodb.net/nodebucket?retryWrites=true&w=majority";
+const MONGO_URL = config.dbUrl;
 
 // Async function for handling Mongodb operations.
 const mongo = async(operations, next) => {
@@ -24,7 +26,7 @@ const mongo = async(operations, next) => {
     });
 
     // Access the nodebucket database within the mongoDB server.
-    const db = client.db("nodebucket");
+    const db = client.db(config.dbname);
     console.log("Connected to db.");
 
     // Execute the provided operations on the connected database.
@@ -36,7 +38,7 @@ const mongo = async(operations, next) => {
     console.log("Connect to db closed.");
     // Handle errors that may occur.
   } catch (err) {
-    const error = new error("Error connecting to db: ", err)
+    const error = new Error("Error connecting to db: ", err)
     error.status = 500;
 
     console.log("Error connecting to db: ", err);
