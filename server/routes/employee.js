@@ -5,7 +5,7 @@
  * Description: Route handling
  */
 
-"use strict"; // TEST API WITH THIS URL: [::1]:3000/api/employees/1007
+"use strict";
 
 // Import the Express framework and create a router.
 const express = require("express");
@@ -86,8 +86,33 @@ router.get("/:empId", (req, res, next) => {
 })
 
 
-// Find all tasks API
-// [::1]:3000/api/employees/1007/tasks -----> use in the get entry for thunder client
+/**
+ * findAllTasks
+ * @swagger
+ * /api/employees/{empId}/tasks:
+ *   get:
+ *     summary: Finds all tasks by employee ID
+ *     description: Retrieves tasks by the employee ID
+ *     parameters:
+ *       - in: path
+ *         name: empId
+ *         required: true
+ *         description: Employee ID
+ *         schema:
+ *           type: integer
+ *     responses:
+ *       '200':
+ *         description: Successful response with the employee data.
+ *       '400':
+ *         description: Bad request, invalid employee ID.
+ *       '404':
+ *         description: Task not found for the specified ID.
+ *       '500':
+ *         description: Internal server error.
+ */
+
+
+// Find all tasks API by empId.
 router.get('/:empId/tasks', (req, res, next) => {
   try {
     let {empId} = req.params;
@@ -132,6 +157,7 @@ router.get('/:empId/tasks', (req, res, next) => {
   }
 })
 
+
 // ajv schema validation
 const taskSchema = {
   type: 'object',
@@ -142,6 +168,41 @@ const taskSchema = {
   additionalProperties: false
 }
 
+
+/**
+ * createTask
+ * @swagger
+ * /api/employees/{empId}/tasks:
+ *   post:
+ *     summary: Creates a task for employee
+ *     description: Create a task for employee ID.
+ *     parameters:
+ *       - in: path
+ *         name: empId
+ *         required: true
+ *         description: Employee ID
+ *         schema:
+ *           type: integer
+ *     requestBody:
+ *       description: Task information
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               text:
+ *                 type: string
+ *     responses:
+ *       '201':
+ *         description: Task created.
+ *       '400':
+ *         description: Bad request, invalid input.
+ *       '404':
+ *         description: Employee not found for the specified ID.
+ *       '500':
+ *         description: Internal server error.
+ */
 
 
 // Create task API
@@ -218,6 +279,7 @@ router.post('/:empId/tasks', (req, res, next) => {
     next(err);
   }
 })
+
 
 // Export the router for use in other modules.
 module.exports = router;

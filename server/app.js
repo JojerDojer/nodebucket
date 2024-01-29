@@ -34,7 +34,7 @@ const swaggerOptions = {
       version: '1.0.0',
     },
   },
-  apis: ['./routes/*.js']
+  apis: ['./server/routes/*.js']
 };
 
 // Initialize Swagger

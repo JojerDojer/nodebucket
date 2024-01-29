@@ -1,0 +1,30 @@
+/**
+ * Title: contact.component.css
+ * Author: John Davidson
+ * Date: 1/24/2024
+ * Description: Styling for the contact page.
+ */
+
+.address-row, .contact-row {
+  border: 2px solid #222f5b;
+  border-radius: 8px;
+  padding-left: 30px;
+  margin-left: 13%;
+  width: 30%;
+}
+
+li {
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.google-map {
+  margin-top: 5%;
+}
+
+iframe {
+  border: 1px solid #222f5b;
+  border-radius: 8px;
+  display: block;
+  margin: auto;
+}

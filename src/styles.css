@@ -5,12 +5,16 @@
  * Description: Global styles file
  */
 
+.main-heading {
+  font-size: 36px;
+}
+
 .bg-ravenclaw-blue {
   background-color: #222f5b;
 }
 
 .bg-ravenclaw-silver {
-  background-color: #a6a6a6;
+  background-color: #BEC4C1;
 }
 
 .ravenclaw-blue {
@@ -18,7 +22,7 @@
 }
 
 .ravenclaw-silver {
-  color: #a6a6a6;
+  color: #BEC4C1;
 }
 
 .ravenclaw-brown {
