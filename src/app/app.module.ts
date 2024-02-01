@@ -20,6 +20,7 @@ import { FooterComponent } from './layouts/footer/footer.component';
 import { TasksComponent } from './tasks/tasks.component';
 import { AboutComponent } from './about/about.component';
 import { ContactComponent } from './contact/contact.component';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { ContactComponent } from './contact/contact.component';
     FooterComponent,
     TasksComponent,
     AboutComponent,
-    ContactComponent
+    ContactComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,
