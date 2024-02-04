@@ -5,7 +5,8 @@
  * Description: Styling for the contact page.
  */
 
-.address-row, .contact-row {
+/* Styling for address/contact columns */
+.address-col, .contact-col {
   border: 2px solid #222f5b;
   border-radius: 8px;
   padding-left: 30px;
@@ -13,17 +14,19 @@
   width: 30%;
 }
 
+/* Styling for contact info text */
 li {
   font-size: 16px;
   font-weight: 500;
 }
 
+/* Styling for google maps */
 .google-map {
   margin-top: 5%;
 }
 
 iframe {
-  border: 1px solid #222f5b;
+  border: 2px solid #222f5b;
   border-radius: 8px;
   display: block;
   margin: auto;

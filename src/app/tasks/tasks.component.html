@@ -33,7 +33,7 @@
     <div class="col-sm-10 col-md-8 col-lg-6">
       <form [formGroup]="newTaskForm" (ngSubmit)="addTask();">
         <div class="input-group mb-3">
-          <input type="text" class="form-control" formControlName="text" placeholder="Add new task">
+          <input type="text" class="form-control task-form" formControlName="text" placeholder="Add new task">
           <button class="btn btn-outline-secondary bg-ravenclaw-blue" type="submit" [disabled]="!newTaskForm.valid" id="btnAdd">Add</button>
         </div>
 
@@ -74,20 +74,26 @@
 
       <div class="p-3 bg-ravenclaw-silver todo-column">
 
-        <div class="container">
+        <!-- Apply the cdk drop effect -->
+        <div class="container task-column"
+          cdkDropList
+          #todoList="cdkDropList"
+          [cdkDropListData]="todo"
+          [cdkDropListConnectedTo]="[doneList]"
+          (cdkDropListDropped)="drop($event)">
 
-          <div  *ngIf="todo.length === 0">
+          <div *ngIf="todo.length === 0">
             <div class="alert alert-info">
-              No Tasks to do yet!
+              No tasks to do yet!
             </div>
           </div>
 
-          <div *ngFor="let item of todo" class="mt-2">
-            <div class="row border ">
+          <div *ngFor="let item of todo" cdkDrag class="mt-2">
+            <div class="row task-box">
 
               <!-- Column 1 of task item -->
               <div class="col-sm-6">
-                <div class="card-body">
+                <div class="card-body task-font">
                   {{ item.text }}
                 </div>
               </div>
@@ -96,13 +102,18 @@
               <!-- column 2 of task item -->
               <div class="col-sm-6">
                 <div class="card-body float-end">
-                  <button class="btn">
+                  <!-- Delete individual todo task button -->
+                  <button (click)="deleteTask(item._id)" class="btn">
                     <span class="material-icons">delete</span>
                   </button>
                 </div>
               </div>
               <!-- End column 2 -->
 
+              <!-- Delete individual task button on specified screen sizes -->
+              <div class="col-12 d-sm-none d-md-none d-lg-none d-xl-none d-grid gap-2 p-2">
+                <button (click)="deleteTask(item._id)" class="btn btn-secondary">Delete</button>
+              </div>
             </div>
           </div>
         </div>
@@ -110,13 +121,24 @@
     </div>
     <!-- end todo column-->
 
+    <!-- Drag and drop instructions -->
+    <div class="col-sm-1 instructions">
+      <p>Drag and drop tasks to the desired column!</p>
+      <h4><i class="bi bi-arrow-left-right"></i></h4>
+    </div>
+
     <!--DONE column-->
     <div class="col-sm-5 col-md-5 col-lg-3">
       <h4 class="text-center">Done</h4>
 
       <div class="p-3 bg-ravenclaw-silver done-column">
 
-        <div class="container">
+        <div class="container task-column"
+          cdkDropList
+          #doneList="cdkDropList"
+          [cdkDropListData]="done"
+          [cdkDropListConnectedTo]="[todoList]"
+          (cdkDropListDropped)="drop($event)">
 
           <div *ngIf="done.length === 0">
             <div class="alert alert-info">
@@ -124,12 +146,12 @@
             </div>
           </div>
 
-          <div *ngFor="let item of done" class="mt-2">
-            <div class="row border bg-white">
+          <div *ngFor="let item of done" cdkDrag class="mt-2">
+            <div class="row task-box">
 
               <!--column 1 of task item-->
               <div class="col-sm-6">
-                <div class="card-body">
+                <div class="card-body task-font">
                   {{ item.text }}
                 </div>
               </div>
@@ -138,12 +160,20 @@
               <!--column 2 of task item-->
               <div class="col-sm-6">
                 <div class="card-body float-end">
-                  <button class="btn">
+                  <!-- Delete individual done task button -->
+                  <button (click)="deleteTask(item._id)" class="btn">
                     <span class="material-icons">delete</span>
                   </button>
                 </div>
               </div>
               <!--end column 2-->
+
+              <!-- Delete individual task button on specified screen sizes -->
+              <div class="col-12 d-sm-none d-lg-none d-xl-none d-grid gap-2 p-2">
+                <button (click)="deleteTask(item._id)" class="btn btn-secondary">Delete</button>
+              </div>
+
+
             </div>
           </div>
 

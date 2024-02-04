@@ -10,17 +10,20 @@ h1 {
   margin-top: 50px;
 }
 
+/* Styling for welcome screen div */
 .description {
   width: 700px;
   margin: auto;
   margin-top: 70px;
 }
 
+/* Styling for welcome screen paragraph text */
 p {
   text-align: center;
   font-size: 20px;
 }
 
+/* Styling for welcome screen image container */
 .image-container {
   margin-top: 25px;
   padding-top: 25px;
@@ -28,6 +31,7 @@ p {
   justify-content: center;
 }
 
+/* Styling for welcome screen image */
 img {
   height: 350px;
   width: 350px;

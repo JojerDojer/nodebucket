@@ -5,9 +5,44 @@
  * Description: Styling for the tasks page
  */
 
+
 button {
   background-color: #222f5b;
   color: white;
+}
+
+/* Individual task divs for both todo and done */
+.task-box {
+  border: 1px solid #222f5b;
+  border-radius: 6px;
+}
+/* Styling for the individual task texts*/
+.task-font {
+  font-weight: 500;
+}
+
+/* Styling for the drag and drop instructions box */
+.instructions {
+  width: 200px;
+  height: 100px;
+  border: 1px solid #222f5b; /* Use the same border color as your task boxes */
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-weight: 500;
+  background-color: #f5f5f5; /* Light background color */
+  color: #222f5b; /* Text color */
+  border-radius: 6px;
+  margin-top: 50px; /* Add some spacing between instructions and task columns */
+  box-shadow: 0px 0px 5px #222f5b; /* Add a subtle box shadow for depth */
+}
+
+/* Styling for the instructions text margin */
+.instructions p {
+  margin-top: 10px;
 }
 
 /* Styling for the todo/done columns. */
@@ -20,7 +55,8 @@ button {
 .alert-info {
   background-color: white;
   color: #ff0062d2;
-  font-weight: 500;
+  font-weight: 400;
+  font-style: italic;
   text-align: center;
   border-color: #222f5b;
 }

@@ -5,6 +5,8 @@
  * Description: Styling for the about page.
  */
 
+
+/* Styling for About container */
 .about-container {
   border: 2px solid #222f5b;
   border-radius: 8px;
@@ -12,21 +14,23 @@
   margin: auto;
 }
 
+/* Center the image container div */
 .image-container {
   margin: auto;
 }
-
+/* Style the About image */
 .bio-img {
   height: 500px;
   width: 350px;
   border: 2px solid #222f5b;
   border-radius: 6px;
 }
-
+/* Center the bio div */
 .bio {
   margin: auto;
 }
 
+/* Style the bio text */
 p {
   font-size: 15px;
   font-weight: 500;

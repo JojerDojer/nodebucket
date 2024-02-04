@@ -12,6 +12,7 @@ import { TaskService } from '../shared/task.service';
 import { Employee } from '../shared/employee.interface';
 import { Item } from '../shared/item.interface';
 import { FormBuilder, FormGroup, Validators} from '@angular/forms';
+import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 
 @Component({
   selector: 'app-tasks',
@@ -66,20 +67,23 @@ export class TasksComponent {
 
   // Method to add a new task.
   addTask() {
+    // Retrieve the task text from the add form.
     const text = this.newTaskForm.controls['text'].value;
 
-    // Call the service to add a task.
+    // Call the service to add a task and subscribe to the observable.
     this.taskService.addTask(this.empId, text).subscribe({
+      // Logic for handling the successful addition of a task.
       next: (task: any) => {
         console.log('Task added with id', task.id);
+
+        // Create a new task object with ID and text.
         const newTask = {
           _id: task.id,
           text: text
         }
 
-        // Add the new task to the todo list.
-        this.todo.push(newTask);
-        this.newTaskForm.reset(); // Reset form
+        this.todo.push(newTask); // Add the new task to the todo list.
+        this.newTaskForm.reset(); // Reset form.
 
         // Display success message.
         this.successMessage = 'Task added successfully';
@@ -94,11 +98,91 @@ export class TasksComponent {
     });
   }
 
+  // Method to delete a task.
+  deleteTask(taskId: string) {
+    console.log(`Task item: ${taskId}`)
+
+    // Display a confirmation dialog
+    if (!confirm('Are you sure you want to delete this task?')) {
+      return
+    }
+
+    // Call the deleteTask() function on the taskService and subscribe to the observable and pass in the empId and taskId
+    this.taskService.deleteTask(this.empId, taskId).subscribe({
+      // Logic for handling the successful deletion of a task.
+      next: (res: any) => {
+        console.log('Task deleted with id', taskId)
+
+        // Ensure todo and done arrays are initialized.
+        if (!this.todo) this.todo = [];
+        if (!this.done) this.done = [];
+
+        // Filter and remove the deleted task from he todo and done arrays.
+        this.todo = this.todo.filter(t => t._id.toString() !== taskId)
+        this.done = this.done.filter(t => t._id.toString() !== taskId)
+
+        this.successMessage = 'Task deleted successfully!' // Set the success message
+
+        this.hideAlert() // Call the hideAlert function
+      },
+      // If there is an error, log it to the console and set the error message.
+      error: (err) => {
+        console.log('error', err)
+        this.errorMessage = err.message
+
+        this.hideAlert() // Call the hideAlert function
+      }
+    })
+  }
+
+  // Method to handle drag-and-drop events.
+  drop(event: CdkDragDrop<any[]>) {
+    if (event.previousContainer === event.container) {
+      // If the item is dropped in the same container, move it to the new index
+      moveItemInArray(event.container.data, event.previousIndex, event.currentIndex)
+
+      console.log('Moved item in array', event.container.data) // Log the new array to the console.
+
+      // Call the updateTaskList() function and pass in the empId, todo and done arrays
+      this.updateTaskList(this.empId, this.todo, this.done)
+    } else {
+      // If the item is dropped in a different container, move it to the new container
+      transferArrayItem(
+        event.previousContainer.data,
+        event.container.data,
+        event.previousIndex,
+        event.currentIndex
+      )
+
+      console.log('Moved item in array', event.container.data) // Log the new array to the console.
+
+      // Call the updateTaskList() function and pass in the empId, todo and done arrays
+      this.updateTaskList(this.empId, this.todo, this.done)
+    }
+  }
+
+
   // Method to hide error and success messages after 5 seconds.
   hideAlert() {
     setTimeout(() => {
       this.errorMessage = '';
       this.successMessage = '';
     }, 5000)
+  }
+
+  // Method to update task lists on the server
+  updateTaskList(empId: number, todo: Item[], done: Item[]) {
+    // Call the updateTask service method and subscribe to the observable.
+    this.taskService.updateTask(empId, todo, done).subscribe({
+      // Logic for handling the successful update of task lists.
+      next: (res: any) => {
+        console.log('Task updated successfully')
+      },
+      error: (err) => {
+        console.log('error', err) // Log the error to the console.
+        this.errorMessage = err.message // Set the error message
+        this.hideAlert() // Call the hideAlert function
+      }
+    })
   }
 }

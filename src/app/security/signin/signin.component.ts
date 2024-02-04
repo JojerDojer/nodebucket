@@ -52,6 +52,7 @@ export class SigninComponent {
     console.log("signinForm", this.signinForm.value);
     const empId = this.signinForm.controls['empId'].value; // get the empId from the signinForm
 
+    // Validate the employee ID
     if (!empId || isNaN(parseInt(empId, 10))) {
       this.errorMessage = 'The employee ID is invalid. Please enter a number.'; // set the errorMessage
       this.isLoading = false; // set isLoading to false
@@ -72,16 +73,18 @@ export class SigninComponent {
 
         this.isLoading = false;
 
-        this.router.navigate([returnUrl]);
+        this.router.navigate([returnUrl]); // Navigate to the returnUrl.
       },
       error: (err) => {
         this.isLoading = false; // set isLoading to false
 
+        // Handle error message (if available in the error response).
         if (err.error.message) {
           this.errorMessage = err.error.message;
           return;
         }
 
+        // Fallback to the top-level error message if a structure error response is not found.
         this.errorMessage = err.message;
       }
     });
