@@ -10,7 +10,6 @@
 // Import MongoClient from the mongodb package.
 const { MongoClient } = require("mongodb");
 const config = require('./config');
-const { name } = require("ejs");
 
 // Mongo connection string.
 const MONGO_URL = config.dbUrl;

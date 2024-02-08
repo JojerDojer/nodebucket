@@ -56,8 +56,7 @@ const routes: Routes = [
   },
   {
     path: '**',
-    component: NotFoundComponent,
-    title: 'Nodebucket: Not Found'
+    redirectTo: 'security/not-found'
   }
 ];
 
